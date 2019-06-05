@@ -1,0 +1,27 @@
+html, body {
+  font-family: 'Lato', sans-serif !important;
+  color: #565656 !important;
+  overflow-x: hidden;
+
+  header {
+    .row {
+      min-height: 40vh;
+
+      .col-sm-4 {
+        background: antiquewhite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:first-child {
+          background: coral;
+        }
+
+        &:last-child {
+          background: cadetblue;
+        }
+      }
+    }
+  }
+
+}
