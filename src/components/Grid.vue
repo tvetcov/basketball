@@ -1,9 +1,11 @@
 <template>
     <div>
         <filters/>
-        <b-row class="mx-sm-5 mx-2">
-            <card v-for="(slam, index) in slams" :key="index" :slamId="slam.id"/>
-        </b-row>
+        <div class="container my-5">
+            <b-row>
+                <card v-for="(slam, index) in slams" :key="index" :slamId="slam.id"/>
+            </b-row>
+        </div>
     </div>
 </template>
 <script>

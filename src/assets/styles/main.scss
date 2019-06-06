@@ -24,8 +24,28 @@ html, body {
     }
   }
 
-  .filters{
+  .filters {
     background: #f2f2f2;
   }
 
+  .card {
+    cursor: pointer;
+
+    .thumb-image {
+      max-height: 195px;
+      overflow: hidden;
+
+      img {
+        -webkit-transition: .25s;
+        -moz-transition: .25s;
+        -ms-transition: .25s;
+        -o-transition: .25s;
+        transition: .25s;
+      }
+    }
+
+    &:hover .thumb-image img {
+      transform: scale(1.03);
+    }
+  }
 }

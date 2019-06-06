@@ -20,8 +20,8 @@
         name: 'Header',
         data() {
             return {
-                videos: Math.round(Math.random() * 20),
-                pictures: Math.round(Math.random() * 20),
+                videos: this.$store.getters['getByType'](2).length,
+                pictures: this.$store.getters['getByType'](1).length,
             }
         },
         computed: {

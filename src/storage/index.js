@@ -15,7 +15,7 @@ export default new Vuex.Store({
         getById: (state) => (id) => {
             return state.mediaItems.find(
                 mediaObject => {
-                    return mediaObject.id == id
+                    return mediaObject.id === id
                 }
             );
         },
