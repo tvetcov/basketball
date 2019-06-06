@@ -3,6 +3,7 @@
         <div class="card">
             <div class="thumb-image">
                 <img v-bind:src="`${this.slam.thumb}`" class="embed-responsive">
+                <span v-if="isVideo" class="play"></span>
             </div>
             {{this.slam.title}}
         </div>
@@ -15,6 +16,11 @@
             return {
                 slam: this.$store.getters['getById'](this.slamId),
             }
+        },
+        computed: {
+            isVideo: function () {
+                return this.slam.type === 2;
+            },
         },
         props: ['slamId']
     }
