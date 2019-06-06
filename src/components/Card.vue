@@ -1,13 +1,13 @@
 <template>
-    <b-col md="4" sm="6" v-if="slamId" class="mb-4">
+    <b-col md="4" sm="6" v-if="id" class="mb-4">
         <div class="card">
             <div class="thumb-image">
-                <img v-bind:src="`${this.slam.thumb}`" class="embed-responsive">
+                <img v-bind:src="`${this.element.thumb}`" class="embed-responsive">
                 <span v-if="isVideo" class="play"></span>
             </div>
             <div class="card-body d-flex justify-content-between">
-                <b class="text-uppercase m-0">{{this.slam.title}}</b>
-                <span class="text-muted">{{this.slam.date}}</span>
+                <b class="text-uppercase m-0">{{this.element.title}}</b>
+                <span class="text-muted">{{this.element.date}}</span>
             </div>
         </div>
     </b-col>
@@ -17,14 +17,14 @@
         name: 'Card',
         data() {
             return {
-                slam: this.$store.getters['getById'](this.slamId),
+                element: this.$store.getters['getById'](this.id),
             }
         },
         computed: {
             isVideo: function () {
-                return this.slam.type === 2;
+                return this.element.type === 2;
             },
         },
-        props: ['slamId']
+        props: ['id']
     }
 </script>
