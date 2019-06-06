@@ -5,7 +5,10 @@
                 <img v-bind:src="`${this.slam.thumb}`" class="embed-responsive">
                 <span v-if="isVideo" class="play"></span>
             </div>
-            {{this.slam.title}}
+            <div class="card-body d-flex justify-content-between">
+                <b class="text-uppercase m-0">{{this.slam.title}}</b>
+                <span class="text-muted">{{this.slam.date}}</span>
+            </div>
         </div>
     </b-col>
 </template>
