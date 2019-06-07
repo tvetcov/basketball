@@ -60,3 +60,22 @@ html, body {
     }
   }
 }
+
+@media screen and (max-width: 1199px) {
+  .thumb-image {
+    max-height: 160px !important;
+  }
+}
+
+
+@media screen and (max-width: 991px) {
+  .thumb-image {
+    max-height: 117px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .thumb-image {
+    max-height: 133px;
+  }
+}
