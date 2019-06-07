@@ -2,11 +2,13 @@
     <div>
         <filters @selectedType="filterByType" @selectedYear="filterByYear" @selectedSorting="orederBy"/>
         <elements :elements="elements"/>
+        <Footer/>
     </div>
 </template>
 <script>
     import Filters from './Filters.vue'
     import Elements from './Elements.vue'
+    import Footer from './Footer.vue'
 
     export default {
         name: 'Grid',
@@ -18,6 +20,7 @@
         components: {
             Filters,
             Elements,
+            Footer,
         },
         methods: {
             filterByType(type) {
@@ -45,7 +48,7 @@
     }
 
     function sortById(left, right) {
-       //a>b = 1
+        //a>b = 1
         if (left.id > right.id) {
             return 1;
         }

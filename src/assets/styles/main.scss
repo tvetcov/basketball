@@ -59,6 +59,11 @@ html, body {
       transform: scale(1.025);
     }
   }
+
+  footer {
+    background-color: coral;
+    color: #fff;
+  }
 }
 
 @media screen and (max-width: 1199px) {
