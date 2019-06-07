@@ -5,7 +5,7 @@ html, body {
 
   header {
     .row {
-      min-height: 10vh;
+      min-height: 15vh;
 
       .col-sm-4 {
         background: antiquewhite;
@@ -29,7 +29,6 @@ html, body {
   }
 
   .card {
-    cursor: pointer;
 
     .thumb-image {
       max-height: 195px;
@@ -53,10 +52,11 @@ html, body {
       left: 50%;
       margin-top: -30px;
       margin-left: -20px;
+      cursor: pointer;
     }
 
     &:hover .thumb-image img {
-      transform: scale(1.03);
+      transform: scale(1.025);
     }
   }
 }
