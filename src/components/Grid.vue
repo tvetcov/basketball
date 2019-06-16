@@ -2,19 +2,21 @@
     <div class="page-wrapper">
         <Header :videos="this.videos" :pictures="this.pictures"/>
         <filters @selectedType="filterByType" @selectedYear="filterByYear" @selectedSorting="orderBy"/>
-        <router-view :elements="elements"></router-view>
+        <router-view :elements="elements" :isEmpty="isListEmpty"></router-view>
     </div>
 </template>
 <script>
     import Filters from './Filters.vue'
     import Elements from './Elements.vue'
     import Header from './Header.vue'
+    import data from '../assets/data.js'
 
     export default {
         name: 'Grid',
         data() {
             return {
                 elements: this.$store.getters.get,
+                isListEmpty: false,
             }
         },
         computed: {
@@ -25,7 +27,10 @@
                 return this.$store.getters.getByType(1).length
             },
         },
-        created: function () {
+        beforeCreate: function () {
+            this.$store.dispatch('setAllItems', data);
+        },
+        beforeMount: function () {
             let filter = this.$route.params.filter;
             if (!filter) {
                 return;
@@ -47,18 +52,20 @@
             filterByType(type) {
                 this.$router.push({name: 'filter', params: {filter: type}});
                 if (type === 0) {
-                    this.displayAll();
+                    this.resetFilters();
                     return;
                 }
-                this.elements = this.$store.getters.getByType(type);
+                this.$store.dispatch('filterByType', type);
+                this.elements = this.$store.getters.get;
             },
             filterByYear(year) {
                 if (isNaN(year)) {
-                    this.displayAll();
+                    this.resetFilters();
                     return;
                 }
                 this.$router.push({name: 'filter', params: {filter: year}});
-                this.elements = this.$store.getters.getByYear(year);
+                this.$store.dispatch('filterByYear', year);
+                this.elements = this.$store.getters.get;
             },
             orderBy(sorting) {
                 this.$router.push({name: 'filter', params: {filter: sorting}});
@@ -68,9 +75,19 @@
                 }
                 this.elements = this.$store.getters.get.sort(sortById).reverse();
             },
-            displayAll() {
+            resetFilters() {
+                this.$store.dispatch('setAllItems', data);
                 this.elements = this.$store.getters.get;
                 this.$router.push({name: 'filter', params: {filter: 'all'}});
+            }
+        },
+        watch: {
+            elements: function (val) {
+                if (val < 1) {
+                    this.isListEmpty = true;
+                } else {
+                    this.isListEmpty = false;
+                }
             }
         }
     }

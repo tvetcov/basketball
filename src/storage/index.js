@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import data from '../assets/nba.json'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        mediaItems: Object.values(data),
+        mediaItems: [],
     },
     getters: {
         get: (state) => {
@@ -34,4 +33,22 @@ export default new Vuex.Store({
             );
         },
     },
+    mutations: {
+        setMediaItems(state, data) {
+            Vue.set(state, 'mediaItems', data);
+        },
+    },
+    actions: {
+        setAllItems({commit}, data) {
+            commit('setMediaItems', data);
+        },
+        filterByType({commit, getters}, type) {
+            let newItems = getters.getByType(type);
+            commit('setMediaItems', newItems);
+        },
+        filterByYear({commit, getters}, year) {
+            let newItems = getters.getByYear(year);
+            commit('setMediaItems', newItems);
+        },
+    }
 });
