@@ -1,16 +1,19 @@
 <template>
     <div id="app">
         <Grid/>
+        <Footer/>
     </div>
 </template>
 
 <script>
     import Grid from './components/Grid.vue'
+    import Footer from './components/Footer.vue'
 
     export default {
         name: 'app',
         components: {
             Grid,
+            Footer
         }
     }
 </script>

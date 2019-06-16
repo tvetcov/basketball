@@ -3,6 +3,16 @@ html, body {
   color: #565656 !important;
   overflow-x: hidden;
 
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .page-wrapper {
+    flex: 1;
+  }
+
   header {
     .row {
       min-height: 15vh;

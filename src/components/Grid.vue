@@ -1,15 +1,13 @@
 <template>
-    <div>
+    <div class="page-wrapper">
         <Header :videos="this.videos" :pictures="this.pictures"/>
         <filters @selectedType="filterByType" @selectedYear="filterByYear" @selectedSorting="orderBy"/>
         <router-view :elements="elements"></router-view>
-        <Footer/>
     </div>
 </template>
 <script>
     import Filters from './Filters.vue'
     import Elements from './Elements.vue'
-    import Footer from './Footer.vue'
     import Header from './Header.vue'
 
     export default {
@@ -43,7 +41,6 @@
         components: {
             Filters,
             Elements,
-            Footer,
             Header
         },
         methods: {
