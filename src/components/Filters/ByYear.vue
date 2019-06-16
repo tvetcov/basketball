@@ -9,7 +9,7 @@
         name: 'ByYear',
         data() {
             return {
-                selected: 'Select all years',
+                selected: null,
             }
         },
         computed: {
@@ -27,6 +27,13 @@
                 const defaultOption = 'Select all years';
                 return [defaultOption, ...years.filter(unique).sort()];
             },
+            selectedItem: function () {
+                let filter = this.$route.params.filter;
+                return +filter > 2 ? filter : 'Select all years';
+            }
+        },
+        created() {
+            this.selected = this.selectedItem;
         },
         methods: {
             selectedYear(year) {

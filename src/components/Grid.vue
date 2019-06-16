@@ -31,7 +31,7 @@
             let filter = this.$route.params.filter;
             if (!filter) {
                 return;
-            } else if (isNaN(+filter)) {
+            } else if (isNaN(+filter) && filter !== 'all') {
                 this.orderBy(filter);
                 return;
             } else if (+filter <= 2) {
@@ -50,14 +50,14 @@
             filterByType(type) {
                 this.$router.push({name: 'filter', params: {filter: type}});
                 if (type === 0) {
-                    this.elements = this.$store.getters.get;
+                    this.displayAll();
                     return;
                 }
                 this.elements = this.$store.getters.getByType(type);
             },
             filterByYear(year) {
                 if (isNaN(year)) {
-                    this.elements = this.$store.getters.get;
+                    this.displayAll();
                     return;
                 }
                 this.$router.push({name: 'filter', params: {filter: year}});
@@ -71,6 +71,10 @@
                 }
                 this.elements = this.$store.getters.get.sort(sortById).reverse();
             },
+            displayAll() {
+                this.elements = this.$store.getters.get;
+                this.$router.push({name: 'filter', params: {filter: 'all'}});
+            }
         }
     }
 
