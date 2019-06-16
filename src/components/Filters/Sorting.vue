@@ -19,8 +19,8 @@
             return {
                 checked: null,
                 radioOptions: [
-                    {value: 0, text: 'Asc'},
-                    {value: 1, text: 'Desc'},
+                    {value: 'asc', text: 'Asc'},
+                    {value: 'desc', text: 'Desc'},
                 ],
             }
         },

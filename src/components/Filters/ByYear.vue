@@ -1,6 +1,6 @@
 <template>
     <b-col sm="4" class="px-4 px-sm-0 mt-3 mt-sm-0">
-        <b-form-select v-model="selected" :options="this.parseYears" size="sm" @change="selectedYear"></b-form-select>
+        <b-form-select v-model="selected" :options="this.parseYears" size="sm" @change="selectedYear"/>
     </b-col>
 </template>
 

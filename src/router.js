@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './App'
+import Elements from './components/Elements'
 
 Vue.use(Router);
 
@@ -9,7 +9,12 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: Home
+            component: Elements
+        },
+        {
+            path: '/:filter',
+            name: 'filter',
+            component: Elements
         },
     ]
 })
